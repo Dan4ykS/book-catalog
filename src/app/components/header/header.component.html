@@ -1,0 +1,49 @@
+<header>
+  <div class="container">
+    <nav>
+      <div class="header__logo flexWrap_FS" routerLink="/">
+        <img
+          src="../../../favicon.ico"
+          alt="logo"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        />
+        <span>Каталог книг</span>
+      </div>
+      <div
+        class="header__main"
+        [ngClass]="{
+          flexWrap_SB: authService.isAuth,
+          justifyEnd: !authService.isAuth || screenWidth < 575
+        }"
+      >
+        <div
+          class="header__createBook"
+          routerLink="/createBook"
+          routerLinkActive="active"
+          *ngIf="authService.isAuth"
+        >
+          <fa-icon [icon]="faPlus"></fa-icon>
+          <span *ngIf="screenWidth > 575">Добавить книгу</span>
+        </div>
+        <div
+          class="header__auth header__auth_logout"
+          (click)="authService.logOut()"
+          *ngIf="authService.isAuth"
+        >
+        <span *ngIf="screenWidth > 575">Выход</span>
+          <fa-icon [icon]="faSignOut"></fa-icon>
+        </div>
+        <div
+          class="header__auth"
+          (click)="authService.toggleAuthPenel()"
+          *ngIf="!authService.isAuth"
+        >
+          <fa-icon [icon]="faUser"></fa-icon>
+          <span *ngIf="screenWidth > 575">Вход</span>
+        </div>
+      </div>
+    </nav>
+    <app-auth></app-auth>
+  </div>
+</header>

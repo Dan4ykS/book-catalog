@@ -1,0 +1,100 @@
+@import "../../../styles/mixins.scss";
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--headerHeight);
+  border-bottom: 1px solid var(--borderColor);
+  background-color: var(--headrColor);
+  @include boxShadow(0, 2px, 2px, 2px);
+
+  nav {
+    position: relative;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    grid-template: 100%/ 1fr 1fr;
+    .header {
+      &__logo,
+      &__auth,
+      &__createBook {
+        cursor: pointer;
+        outline: none;
+      }
+
+      &__main {
+        span {
+          margin-left: 5px;
+        }
+        .active {
+          background-color: #fff3dead;
+        }
+        &.justifyEnd {
+          justify-self: end;
+        }
+      }
+
+      &__auth,
+      &__createBook {
+        background-color: inherit;
+        padding: 0.3rem 0.5rem;
+        border-radius: 5px;
+        transition: 0.3s all;
+        fa-icon {
+          font-size: 18px;
+        }
+      }
+
+      &__auth {
+        &_logout {
+          span {
+            margin-right: 5px;
+            margin-left: 0;
+          }
+        }
+      }
+
+      &__logo {
+        img,
+        span {
+          transition: 0.3s all;
+        }
+        img {
+          width: 30px;
+        }
+        span {
+          padding: 0.3rem 0.5rem;
+          font-weight: 700;
+          font-size: 25px;
+          border-radius: 5px;
+          background-color: var(--headrColor);
+        }
+        .active {
+          transform: scale(1.2);
+          & + span {
+            margin-left: 5px;
+            background-color: #fff3dead;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  header {
+    nav {
+      .header {
+        &__logo {
+          span {
+            font-size: 20px;
+            padding: 0.2rem 0.4rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import "./mixins.scss";
+
+.formControl {
+  margin-bottom: 10px;
+  .invalid {
+    color: var(--dangerColor);
+    font-size: 12px;
+  }
+  input {
+    &.ng-invalid.ng-dirty,
+    &.ng-invalid.ng-touched {
+      @include defaultBorder(var(--dangerColor));
+    }
+    &.ng-valid.ng-dirty {
+      @include defaultBorder(var(--successColor));
+    }
+  }
+}

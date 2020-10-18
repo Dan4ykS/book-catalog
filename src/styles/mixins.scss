@@ -1,0 +1,8 @@
+@mixin defaultBorder($color: var(--borderColor)) {
+  border: 1px solid $color;
+  border-radius: 5px;
+}
+
+@mixin boxShadow($offsetX: 0, $offsetY: 3px, $blurRadius: 10px, $spreadRadius: 3px, $color: var(--shadowColor)) {
+  box-shadow: $offsetX $offsetY $blurRadius $spreadRadius $color;
+}

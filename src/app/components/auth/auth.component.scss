@@ -1,0 +1,75 @@
+@import "../../../styles/mixins.scss";
+
+.auth {
+  position: absolute;
+  z-index: 150;
+  overflow: hidden;
+  width: 300px;
+  right: 0;
+  top: -500px;
+  @include defaultBorder;
+  background-color: white;
+  @include boxShadow;
+  transition: 0.8s all;
+
+  &__track {
+    display: flex;
+    transition: 0.5s all;
+  }
+
+  &__logIn,
+  &__registration {
+    padding: 5px 20px;
+    min-width: 100%;
+    min-height: 100%;
+    input {
+      margin: 0 auto;
+    }
+  }
+
+  &__registration {
+    position: relative;
+    padding-bottom: 45px;
+    button {
+      position: absolute;
+      bottom: 10px;
+      width: calc(100% - 40px);
+    }
+  }
+
+  &__logIn {
+    padding-bottom: 20px;
+    button {
+      width: 100%;
+      &:last-child {
+        margin-top: 10px;
+      }
+    }
+    .formControl {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    padding-top: 10px;
+    transition: 0.2s;
+  }
+
+  &_open {
+    top: calc(var(--headerHeight) + 5px);
+  }
+}
+
+@media (max-width: 575px) {
+  .auth {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    &_open {
+      top: 40%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

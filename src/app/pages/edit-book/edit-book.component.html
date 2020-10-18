@@ -1,0 +1,9 @@
+<section class="editBook contentCenter">
+  <h2>Редактирование книги: {{  bookService.book?.title || '' }}</h2>
+  <app-loader-data [loading]="bookService.loading">
+    <app-book-redactor
+      type="edit"
+      [funcForSubmit]="bookService.updateBook"
+    ></app-book-redactor>
+  </app-loader-data>
+</section>

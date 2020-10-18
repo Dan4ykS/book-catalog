@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./styles/variables.scss";
+@import "./styles/reboot.scss";
+@import "./styles/flexWraps.scss";
+@import "./styles/formControls.scss";
+@import "./styles/buttons.scss";
+@import "./styles/mixins.scss";
+
+.container {
+  max-width: 1100px;
+  padding: 0 1rem;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.contentCenter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  max-width: 1100px;
+  padding: 20px;
+  @include defaultBorder;
+  h2 {
+    margin-bottom: 30px;
+  }
+}
+
+.hiddenElem {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 575px) {
+  .container {
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .contentCenter {
+    width: 90vw;
+  }
+
+  body {
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}

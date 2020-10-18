@@ -1,0 +1,22 @@
+@import "../../../styles/mixins.scss";
+
+.main {
+  &__contentWrapper {
+    display: grid;
+    grid-template: auto / 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  &__book {
+    @include defaultBorder;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  .main {
+    &__contentWrapper {
+      grid-template: auto / 1fr;
+    }
+  }
+}

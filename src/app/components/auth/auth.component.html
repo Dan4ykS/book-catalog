@@ -1,0 +1,120 @@
+<div class="auth" [class]="{ auth_open: authService.openAuthPanel }">
+  <div class="auth__title">
+    <h3>{{ title }}</h3>
+    <hr />
+  </div>
+  <div class="auth__track" #track>
+    <form
+      class="auth__logIn"
+      [formGroup]="logInForm"
+      (ngSubmit)="submitLogin()"
+    >
+      <div class="formControl">
+        <input type="text" placeholder="Логин" formControlName="login" (click)="clearErrors()" />
+        <app-invalid-message
+          [formContol]="logInForm.get('login')"
+          [invalidContent]="[
+            { message: 'Поле обязательно', error: 'required' },
+            { message: 'Неверный логин', error: 'invalidField' }
+          ]"
+        >
+        </app-invalid-message>
+      </div>
+      <div class="formControl">
+        <input
+          type="text"
+          placeholder="Пароль"
+          formControlName="password"
+          type="password"
+        />
+        <app-invalid-message
+          [formContol]="logInForm.get('password')"
+          [invalidContent]="[
+            { message: 'Поле обязательно', error: 'required' },
+            {
+              message: 'Пароль слишком короткий, минимальная длина 6',
+              error: 'minlength'
+            },
+            { message: 'Неверный пароль', error: 'invalidField' }
+          ]"
+        >
+        </app-invalid-message>
+      </div>
+      <button
+        class="btn btn_success"
+        type="submit"
+        [disabled]="logInForm.invalid || logInForm.pending"
+      >
+        Вход
+      </button>
+      <button class="btn btn_blue" type="button" (click)="openRegistration()">
+        Регистрация
+      </button>
+    </form>
+    <form
+      class="auth__registration"
+      [formGroup]="registrationForm"
+      (ngSubmit)="submitRegistration()"
+    >
+      <div class="formControl">
+        <input
+          type="text"
+          placeholder="Придумайте логин"
+          formControlName="login"
+        />
+        <app-invalid-message
+          [formContol]="registrationForm.get('login')"
+          [invalidContent]="[
+            { message: 'Поле обязательно', error: 'required' },
+            { message: 'Изините, но такой логин занят', error: 'invalidField' }
+          ]"
+        >
+        </app-invalid-message>
+      </div>
+      <div class="formControl">
+        <input
+          type="text"
+          placeholder="Введите Email"
+          formControlName="email"
+        />
+        <app-invalid-message
+          [formContol]="registrationForm.get('email')"
+          [invalidContent]="[
+            { message: 'Поле обязательно', error: 'required' },
+            { message: 'Email не валидный', error: 'email' }
+          ]"
+        >
+        </app-invalid-message>
+      </div>
+      <div class="formControl">
+        <input
+          type="password"
+          placeholder="Придумайте пароль"
+          formControlName="password"
+        />
+        <app-invalid-message
+          [formContol]="registrationForm.get('password')"
+          [invalidContent]="[
+            { message: 'Поле обязательно', error: 'required' },
+            {
+              message: 'Пароль слишком короткий, минимальная длина 6',
+              error: 'minlength'
+            }
+          ]"
+        >
+        </app-invalid-message>
+      </div>
+      <button
+        class="btn btn_success"
+        type="submit"
+        [disabled]="registrationForm.invalid || registrationForm.pending"
+      >
+        Зарегистрироваться
+      </button>
+    </form>
+  </div>
+</div>
+<app-backdrop
+  [conditionForOpen]="authService.openAuthPanel"
+  (onClose)="closeAuthPanel()"
+></app-backdrop>

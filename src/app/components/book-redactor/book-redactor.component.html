@@ -1,0 +1,62 @@
+<form [formGroup]="bookForm" (ngSubmit)="submit()" class="bookRedactor">
+  <div class="formControl">
+    <label>Название кинги:</label>
+    <input
+      type="text"
+      formControlName="title"
+      [value]="bookService.book.title"
+      (input)="formIsInvalid = false"
+    />
+    
+  </div>
+  <div class="formControl">
+    <label>Автор книги:</label>
+    <input
+      type="text"
+      formControlName="author"
+      [value]="bookService.book.author"
+      (input)="formIsInvalid = false"
+    />
+    
+  </div>
+  <div class="formControl">
+    <label>Год выпуска:</label>
+    <input
+      type="text"
+      formControlName="publishingYear"
+      [value]="bookService.book.publishingYear"
+      (input)="formIsInvalid = false"
+    />
+    
+  </div>
+  <div class="formControl">
+    <label>ISBN:</label>
+    <input
+      type="text"
+      formControlName="ISBN"
+      [value]="bookService.book.ISBN"
+      (input)="formIsInvalid = false"
+    />
+    
+  </div>
+  <div class="btnGroup btnGroup_center">
+    <button class="btn btn_warn" routerLink="/">
+      <fa-icon [icon]="faArrowLeft"></fa-icon> Назад
+    </button>
+    <button
+      class="btn btn_success"
+      type="submit"
+      [disabled]="bookForm.invalid || bookForm.pending || formIsInvalid"
+    >
+      {{ type === "create" ? "Создать" : "Изменить" }}
+    </button>
+    <button
+      *ngIf="type === 'edit'"
+      class="btn btn_danger"
+      type="button"
+      (click)="removeBook()"
+    >
+      Удалить
+    </button>
+  </div>
+</form>

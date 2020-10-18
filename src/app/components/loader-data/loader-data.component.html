@@ -1,0 +1,17 @@
+<!-- <h3 *ngIf="error" class="invalid">{{ error }}</h3> -->
+<div
+  *ngIf="loading; else component"
+  class="loadingio-spinner-ellipsis-58d1uacm30o"
+>
+  <div class="ldio-4hs57pso3p6">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<ng-template #component>
+  <ng-content></ng-content>
+</ng-template>
+

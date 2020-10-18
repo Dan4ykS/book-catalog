@@ -1,0 +1,42 @@
+<section class="main">
+  <app-loader-data
+    [loading]="booksService.loading"
+    [funcForLoading]="
+      booksService.books.length ? null : booksService.getAllBooks
+    "
+  >
+    <div class="main__contentWrapper">
+      <h2 *ngIf="!booksService.books.length">В приложении пока нет книг, зарегистрируйтесь и добавьте их!</h2>
+      <div *ngFor="let book of booksService.books" class="main__book">
+        <h3>Книга: {{ book.title }}</h3>
+        <hr />
+        <div>Автор: {{ book.author }}</div>
+        <hr />
+        <div>Год выпуска: {{ book.publishingYear }}</div>
+        <hr />
+        <div>ISBN: {{ book.ISBN }}</div>
+        <hr />
+        <div class="btnGroup">
+          <button
+            class="btn btn_blue"
+            [routerLink]="['editBook', book.id]"
+            *ngIf="
+              authService.isAuth && authService.user.login === book.creator
+            "
+          >
+            Редактировать
+          </button>
+          <button
+            class="btn btn_danger"
+            *ngIf="
+              authService.isAuth && authService.user.login === book.creator
+            "
+            (click)="removeBook(book.id)"
+          >
+            Удалить
+          </button>
+        </div>
+      </div>
+    </div>
+  </app-loader-data>
+</section>

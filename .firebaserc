@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "book-catalog-f262a": {
+      "hosting": {
+        "book-catalog": [
+          "book-catalog-f262a"
+        ]
+      }
+    }
+  }
+}

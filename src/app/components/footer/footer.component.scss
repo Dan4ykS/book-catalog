@@ -1,0 +1,14 @@
+footer {
+  height: var(--footerHeight);
+  background-color: var(--footerColor);
+  font-size: 21px;
+  span {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 575px) {
+  footer {
+    font-size: 17px;
+  }
+}
