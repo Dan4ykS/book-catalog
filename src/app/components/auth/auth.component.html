@@ -10,7 +10,7 @@
       (ngSubmit)="submitLogin()"
     >
       <div class="formControl">
-        <input type="text" placeholder="Логин" formControlName="login" (click)="clearErrors()" />
+        <input type="text" placeholder="Логин" formControlName="login" />
         <app-invalid-message
           [formContol]="logInForm.get('login')"
           [invalidContent]="[

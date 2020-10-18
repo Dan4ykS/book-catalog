@@ -15,8 +15,6 @@ export class EditBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Компонент создался');
-
     this._route.params.subscribe((params: Params) => {
       this.bookService.getBook(params.id);
     });

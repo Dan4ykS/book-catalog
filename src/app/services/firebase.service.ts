@@ -42,7 +42,6 @@ export class FirebaseService {
   }
 
   async updateBook(bookId: string, newData: IUpdatedBookField): Promise<void> {
-    console.log(bookId, newData);
     await this._connectionToBooks$.doc(bookId).update(newData);
   }
 

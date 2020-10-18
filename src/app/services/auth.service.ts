@@ -45,8 +45,6 @@ export class AuthService {
   };
 
   logOut(): void {
-    console.log('Нажатие');
-
     this._user = {
       login: '',
       password: '',

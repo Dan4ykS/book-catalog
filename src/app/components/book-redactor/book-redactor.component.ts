@@ -85,8 +85,4 @@ export class BookRedactorComponent implements OnInit {
       alert(`Ошибка ${error} попробуте перезагурзить страницу`);
     }
   }
-
-  input(): void {
-    console.log(122);
-  }
 }

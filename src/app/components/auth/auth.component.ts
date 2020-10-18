@@ -47,10 +47,6 @@ export class AuthComponent implements OnInit {
     this.registrationForm.reset();
   }
 
-  clearErrors(): void {
-    console.log('1');
-  }
-
   async submitLogin(): Promise<void> {
     try {
       const { login, password } = this.logInForm.value;
@@ -66,7 +62,6 @@ export class AuthComponent implements OnInit {
       await this.authService.registration(this.registrationForm.value);
       this.closeAuthPanel();
     } catch (error) {
-      console.log(error);
       this.setErrors(this.registrationForm.controls);
     }
   }
