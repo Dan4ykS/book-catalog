@@ -1,4 +1,7 @@
 <section class="main">
+  <h2 *ngIf="!booksService.books.length">
+    В приложении пока нет книг, зарегистрируйтесь и добавьте их!
+  </h2>
   <app-loader-data
     [loading]="booksService.loading"
     [funcForLoading]="
@@ -6,7 +9,6 @@
     "
   >
     <div class="main__contentWrapper">
-      <h2 *ngIf="!booksService.books.length">В приложении пока нет книг, зарегистрируйтесь и добавьте их!</h2>
       <div *ngFor="let book of booksService.books" class="main__book">
         <h3>Книга: {{ book.title }}</h3>
         <hr />
